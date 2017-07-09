@@ -5,8 +5,9 @@ class PagesController{
         //var_dump($params);
 
         // check if user s logged in
-        if( $_SESSION["user_id"] ){
+        if( $_SESSION["username"] ){
             // check if user has one of the permited roles
+            // TODO: check if user was deleted
             $user_id = $_SESSION["user_id"];
             $user = $_GLOBALS['users'][$user_id];
             $roles = $user->roles;
@@ -20,7 +21,8 @@ class PagesController{
             }
         }
         else{
-            // send to login page
+            $_SESSION['PAGE_REFERER'] = $_SERVER['REQUEST_URI'];
+            header('Location: /sign_in');
         }
 
     }
