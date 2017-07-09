@@ -29,6 +29,17 @@ function apiAuthenticatedUser(){
     }
 }
 
+function apiIsAdmin(){
+    $user = User::findBy("username", $_SERVER['PHP_AUTH_USER']);
+
+    if( $user ){
+        return $user->hasRole("ADMIN");
+    }
+    else{
+        unauthorizedAction();
+    }
+}
+
 function unauthorizedAction(){
     header('WWW-Authenticate: Basic realm ="API"');
     header('HTTP/1.0 401 Unauthorized');

@@ -18,6 +18,19 @@ class User{
         return $this->password;
     }
 
+    public function hasRole($role = ""){
+        return in_array($role, $this->roles);
+    }
+
+    public function updateAttributes($attrs = []){
+        $this->username = isset($attrs['username'])? $attrs['username'] : $this->username;
+        $this->password = isset($attrs['password'])? $attrs['password'] : $this->password;
+        if(isset($attrs['roles'])){
+            array_push($this->roles, $attrs['roles']);
+        }
+        writeUser($this);
+    }
+
     // find a user by attribute
     static public function findBy($attribute, $value){
         $user = NULL;

@@ -12,6 +12,7 @@ require "app/models/User.php";
 require "core/Flash.php";
 require "core/SessionHelper.php";
 require "core/RenderHelper.php";
+require "core/Database.php";
 
 // set default users
 $db_users = file('db/users.txt');
