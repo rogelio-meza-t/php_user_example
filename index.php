@@ -5,7 +5,7 @@ require "vendor/autoload.php";
 require "app/controllers/PagesController.php";
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r){
-    $r->addRoute('GET', '/page/{id:[1-3]}', 'PagesController/view');
+    $r->addRoute('GET', '/page/{id:[1-3]}', 'PagesController/show');
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
