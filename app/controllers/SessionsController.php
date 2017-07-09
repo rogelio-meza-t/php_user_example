@@ -40,4 +40,12 @@ class SessionsController{
             }
         }
     }
+
+    public function destroy_session($params){
+        // destroy session variables and redirect to login page
+        unset($_SESSION['username']);
+        unset($_SESSION['user_id']);
+
+        header('Location: /sign_in');
+    }
 }

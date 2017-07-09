@@ -25,6 +25,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r){
     $r->addRoute('GET', '/page/{id:[1-3]}', 'PagesController/show');
     $r->addRoute('GET', '/sign_in', 'SessionsController/new_session');
     $r->addRoute('POST', '/sign_in', 'SessionsController/create_session');
+    $r->addRoute('GET', '/sign_out', 'SessionsController/destroy_session');
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
