@@ -2,6 +2,10 @@
 
 class SessionsController{
 
+    function __construct(){
+
+    }
+
     public function new_session($params){
         render('sessions','new', NULL);
     }

@@ -10,4 +10,11 @@ class Flash{
         $message = $_SESSION['FLASH_'.strtoupper($type)];
         unset($_SESSION['FLASH_'.strtoupper($type)]);
     }
+
+    public static function exists($type){
+        if(isset($_SESSION['FLASH_'.strtoupper($type)])){
+            return true;
+        }
+        return false;
+    }
 }

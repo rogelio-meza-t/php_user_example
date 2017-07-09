@@ -9,6 +9,7 @@ require "app/controllers/SessionsController.php";
 require "app/models/User.php";
 
 require "core/Flash.php";
+require "core/SessionHelper.php";
 require "core/RenderHelper.php";
 
 var_dump($_SESSION);
