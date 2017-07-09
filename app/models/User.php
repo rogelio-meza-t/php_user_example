@@ -5,12 +5,17 @@ class User{
     public $id;
     public $username;
     public $roles = [];
-    public $password;
+    private $password;
 
-    function __construct($username, $password, $roles=NULL){
+    function __construct($id, $username, $password, $roles=NULL){
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->roles = $roles;
+    }
+
+    public function getPassword(){
+        return $this->password;
     }
 
     // find a user by attribute
@@ -20,7 +25,6 @@ class User{
             $attrs = get_object_vars($u);
             if($value == $attrs[$attribute]){
                 //set current ID position in "database"
-                $u->id = $key;
                 $user = $u;
                 break;
             }
