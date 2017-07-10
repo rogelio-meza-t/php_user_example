@@ -58,9 +58,12 @@ While the private page are:
 Working with the API
 --------------------
 
-* Show user info example:
+For every API request you need to set authorization with Basic Auth
+
+## Show user info example:
+
 ```sh
-localhost:4000/api/users/1/show
+GET http://localhost:4000/api/users/1/show
 ```
 
 returns
@@ -68,13 +71,35 @@ returns
 ```json
 {
   "id": "1",
-  "username": "user_one_two",
+  "username": "user_one",
   "roles": [
     "PAGE_1"
   ]
 }
 ```
 
-* Edit user info
+## Edit user info
 ```sh
-localhost:4000/api/users/1/edit
+POST http://localhost:4000/api/users/1/update
+```
+
+set the parameters as follows. `username`, `password` and `roles` are optional.
+If you want to modify the user roles, set it as an array.
+
+```json
+{
+  "username": "user_one_two",
+  "password": "1234",
+  "roles": [
+    "PAGE_2"
+  ]
+}
+```
+
+returns
+
+```json
+{
+  "success": "User updated successfuly"
+}
+```
