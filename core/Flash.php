@@ -9,6 +9,7 @@ class Flash{
     public static function show($type){
         $message = $_SESSION['FLASH_'.strtoupper($type)];
         unset($_SESSION['FLASH_'.strtoupper($type)]);
+        return $message;
     }
 
     public static function exists($type){

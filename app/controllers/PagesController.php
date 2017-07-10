@@ -2,8 +2,6 @@
 
 class PagesController{
     public function show($params){
-        //var_dump($params);
-
         // check if user s logged in
         if( $_SESSION["username"] ){
             // check if user has one of the permited roles
@@ -13,7 +11,8 @@ class PagesController{
             $roles = $user->roles;
             $role_page = "PAGE_".$params;
 
-            if( in_array($role_page, $roles) ){
+            if( $user->hasRole($role_page) ){
+                $GLOBALS['page_name'] = $params;
                 render('users', 'show', $user);
             }
             else{

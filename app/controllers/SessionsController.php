@@ -19,7 +19,7 @@ class SessionsController{
             $user = User::findBy("username", $username);
 
             if( $user ){
-                if($user->password == $password){
+                if($user->getPassword() == $password){
                     $_SESSION['username'] = $user->username;
                     $_SESSION['user_id'] = $user->id;
                     Flash::set("success", "Logged in successfuly");
@@ -33,10 +33,13 @@ class SessionsController{
                 }
                 else{
                     //TODO: wrong password
+                    Flash::set("error", "Wrong username or password");
+                    header("Location: /sign_in");
                 }
             }
             else{
-                // TODO: users doesn't exists in database
+                Flash::set("error", "Wrong username or password");
+                header("Location: /sign_in");
             }
         }
     }
