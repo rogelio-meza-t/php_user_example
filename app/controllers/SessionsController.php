@@ -25,22 +25,27 @@ class SessionsController{
                     Flash::set("success", "Logged in successfuly");
 
                     if( $_SESSION['PAGE_REFERER'] ){
-                        header('Location: '. $_SESSION['PAGE_REFERER']);
+                        $referer = $_SESSION['PAGE_REFERER'];
+                        unset($_SESSION['PAGE_REFERER']);
+                        header('Location: '. $referer);
                     }
                     else{
-                        header('Location: /sign_in');
+                        render('sessions', 'new');
                     }
                 }
                 else{
                     //TODO: wrong password
                     Flash::set("error", "Wrong username or password");
-                    header("Location: /sign_in");
+                    render('sessions', 'new');
                 }
             }
             else{
                 Flash::set("error", "Wrong username or password");
-                header("Location: /sign_in");
+                render('sessions', 'new');
             }
+        }
+        else{
+            die("no login");
         }
     }
 

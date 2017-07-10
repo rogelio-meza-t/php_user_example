@@ -14,13 +14,18 @@ require "core/SessionHelper.php";
 require "core/RenderHelper.php";
 require "core/Database.php";
 
+var_dump($_SESSION);
+
 // set default users
-$db_users = file('db/users.txt');
+$db_users = file('db/users.txt', FILE_IGNORE_NEW_LINES);
 $users = [];
 foreach($db_users as $user){
     $udata = explode(',', $user);
     $users[] = new User(
-        $udata[0], $udata[1], $udata[2], explode('|',trim($udata[3]))
+        $udata[0],
+        $udata[1],
+        $udata[2],
+        explode('|', trim($udata[3]))
     );
 }
 
@@ -33,6 +38,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r){
     // api routes
     $r->addRoute('GET', '/api/users/{id:\d+}/show', 'UsersController/show');
     $r->addRoute('POST', '/api/users/{id:\d+}/update', 'UsersController/update');
+    $r->addRoute('POST', '/api/users/create', 'UsersController/create');
 });
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];

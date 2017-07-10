@@ -31,6 +31,10 @@ class User{
         writeUser($this);
     }
 
+    public function save(){
+        saveUser($this);
+    }
+
     // find a user by attribute
     static public function findBy($attribute, $value){
         $user = NULL;

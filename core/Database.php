@@ -20,3 +20,18 @@ function writeUser($user = NULL){
         }, file('db/users.txt'))
     ));
 }
+
+//store a user
+function saveUser($user = NULL){
+    $new_data = implode(',', [
+        getNewId(),
+        $user->username,
+        $user->getPassword(),
+        implode('|', $user->roles)
+    ]);
+    file_put_contents('db/users.txt', $new_data.PHP_EOL, FILE_APPEND);
+}
+function getNewId(){
+    $last_user = end($GLOBALS['users']);
+    return ((int)$last_user->id + 1);
+}

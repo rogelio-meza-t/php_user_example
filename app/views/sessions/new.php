@@ -1,7 +1,7 @@
 <?php if( currentUser() ): ?>
     <?php if (Flash::exists("success")): ?>
         <div>
-            <?= Flash::show("success"); ?>
+            <?php echo Flash::show("success"); ?>
         </div>
     <?php endif; ?>
     <div>You are currently logged in</div>

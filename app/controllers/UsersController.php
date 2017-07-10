@@ -37,6 +37,21 @@ class UsersController{
         }
     }
 
+    // create a new user
+    public function create($params){
+        if( apiAuthenticatedUser() && apiIsAdmin() ){
+            $input_post = file_get_contents('php://input');
+            $post_params = json_decode($input_post);
+            $user = new User(
+                NULL,
+                $post_params->username,
+                $post_params->password,
+                $post_params->roles
+            );
+            $user->save();
+        }
+    }
+
     private function apiNotFound(){
         header('Content-Type: application/json');
         header('HTTP/1.0 400 Bad Request');

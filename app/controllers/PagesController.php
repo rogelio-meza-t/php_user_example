@@ -13,7 +13,7 @@ class PagesController{
 
             if( $user->hasRole($role_page) ){
                 $GLOBALS['page_name'] = $params;
-                render('users', 'show', $user);
+                render('users', 'show');
             }
             else{
                 //show error
