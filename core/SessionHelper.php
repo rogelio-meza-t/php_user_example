@@ -33,7 +33,12 @@ function apiIsAdmin(){
     $user = User::findBy("username", $_SERVER['PHP_AUTH_USER']);
 
     if( $user ){
-        return $user->hasRole("ADMIN");
+        if ($user->hasRole("ADMIN")){
+            return true;
+        }
+        else{
+            unauthorizedAction();
+        }
     }
     else{
         unauthorizedAction();
