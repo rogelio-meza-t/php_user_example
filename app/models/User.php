@@ -26,7 +26,7 @@ class User{
         $this->username = isset($attrs['username'])? $attrs['username'] : $this->username;
         $this->password = isset($attrs['password'])? $attrs['password'] : $this->password;
         if(isset($attrs['roles'])){
-            array_push($this->roles, $attrs['roles']);
+            $this->roles = array_merge($this->roles, $attrs['roles']);
         }
         writeUser($this);
     }

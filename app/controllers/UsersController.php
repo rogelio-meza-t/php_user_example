@@ -30,6 +30,8 @@ class UsersController{
                     "roles" => $post_params->roles
                 ];
                 $user->updateAttributes($attributes);
+                header('Content-Type: application/json');
+                echo json_encode(["success"=>"User updated successfuly"]);
             }
             else{
                 $this->apiNotFound();
@@ -49,6 +51,8 @@ class UsersController{
                 $post_params->roles
             );
             $user->save();
+            header('Content-Type: application/json');
+            echo json_encode(["success" => "User created successfuly"]);
         }
     }
 
