@@ -13,10 +13,11 @@ class PagesController{
 
             if( $user->hasRole($role_page) ){
                 $GLOBALS['page_name'] = $params;
-                render('users', 'show');
+                render('pages', 'show');
             }
             else{
-                //show error
+                header('HTTP/1.0 401 Unauthorized');
+                render('errors', '401');
             }
         }
         else{

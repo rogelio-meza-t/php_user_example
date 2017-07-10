@@ -14,7 +14,6 @@ require "core/SessionHelper.php";
 require "core/RenderHelper.php";
 require "core/Database.php";
 
-var_dump($_SESSION);
 
 // set default users
 $db_users = file('db/users.txt', FILE_IGNORE_NEW_LINES);
@@ -28,6 +27,14 @@ foreach($db_users as $user){
         explode('|', trim($udata[3]))
     );
 }
+
+// check user last activity
+if( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 300) ){
+    unset($_SESSION['username']);
+    unset($_SESSION['user_id']);
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r){
     $r->addRoute('GET', '/page/{id:[1-3]}', 'PagesController/show');

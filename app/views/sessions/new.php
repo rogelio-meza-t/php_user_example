@@ -1,4 +1,5 @@
 <?php if( currentUser() ): ?>
+    <?php include "app/views/sessions/logout.php"; ?>
     <?php if (Flash::exists("success")): ?>
         <div>
             <?php echo Flash::show("success"); ?>
