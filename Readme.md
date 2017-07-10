@@ -1,10 +1,10 @@
-Requirements
-------------
+# Requirements
+
 * PHP 5.6.17+
 * composer
 
-Installation
-------------
+# Installation
+
 * Clone the repository
 ```sh
 git clone https://github.com/rogelio-meza-t/php_user_example.git
@@ -20,8 +20,8 @@ cd working/path/php_user_example
 composer install
 ```
 
-Run the server
--------------
+# Run the server
+
 * Start the built-in server
 ```sh
 php -S localhost:4000
@@ -30,8 +30,7 @@ php -S localhost:4000
 
 If you get a `404 Not Found` you are ok, because the root path is not defined
 
-Working with users
------------------
+# Working with users
 
 By default, there are 4 users, each one with one role defined:
 
@@ -55,14 +54,14 @@ While the private page are:
 |localhost:4000/page/2|
 |localhost:4000/page/3|
 
-Working with the API
---------------------
+# Working with the API
 
 For every API request you need to set authorization with Basic Auth
 
 ## Show user info example:
 
 ```sh
+# GET http://localhost:4000/api/users/{id}/show
 GET http://localhost:4000/api/users/1/show
 ```
 
@@ -103,3 +102,7 @@ returns
   "success": "User updated successfuly"
 }
 ```
+
+## Create a new user
+```sh
+POST http://localhost:4000/api/users/create
