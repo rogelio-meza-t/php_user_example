@@ -79,6 +79,7 @@ returns
 
 ## Edit user info
 ```sh
+# POST http://localhost:4000/api/users/{id}/update
 POST http://localhost:4000/api/users/1/update
 ```
 
@@ -87,7 +88,7 @@ If you want to modify the user roles, set it as an array.
 
 ```json
 {
-  "username": "user_one_two",
+  "username": "new_username",
   "password": "1234",
   "roles": [
     "PAGE_2"
@@ -105,4 +106,27 @@ returns
 
 ## Create a new user
 ```sh
+# POST http://localhost:4000/api/users/create
 POST http://localhost:4000/api/users/create
+```
+
+Parameters
+
+```json
+{
+  "username": "the_new_user",
+  "password": "1234",
+  "roles": [
+    "PAGE_1",
+    "PAGE_2"
+  ]
+}
+```
+
+returns
+
+```json
+{
+  "success": "User created successfuly"
+}
+```
